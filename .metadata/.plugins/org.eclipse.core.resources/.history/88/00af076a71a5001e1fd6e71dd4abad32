@@ -1,0 +1,14 @@
+#include "exti.h"
+
+#define GPIOCEN    (1U<<2)
+
+void pc13_exti_init(void) {
+
+	/*Enable GPIOC CLock*/
+	RCC->AHB1ENR |= GPIOCEN;
+
+	/*Set PIN pc13 Mode */
+	GPIOC->MODER &=~(1U<<26);
+	GPIOC->MODER &=~(1U<<27);
+
+}
